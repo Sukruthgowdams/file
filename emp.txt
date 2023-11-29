@@ -1,0 +1,32 @@
+infile1 = open("Emp.txt",'a+')
+flag =input("You want to update the file y/n")
+if flag =='y':
+    n =int(input("Enter how many Employees\n"))
+    for i in range(n):
+        Emp_code,Emp_name,Basic_salary,DA,LIC,PF = input("""Enter:
+1. Emp_code
+2. Emp_name
+3. Basic_salary
+4. DA
+5. LIC 
+6. PF \n""").split()
+        Total_deductions = float(LIC)+float(PF)
+        Gross_salary= float(Basic_salary)+float(DA)
+        Net_salary= Gross_salary-Total_deductions
+        infile1.writelines(Emp_code+" "+Emp_name+" "+str(Basic_salary)+" "+str(DA)+" "+ str(PF)+" "+str(Total_deductions)+"\n")
+        
+infile1.close()
+print("""
+Emp details:
+1. Emp_code
+2. Emp_name
+3. Basic_salary
+4. DA
+5.Gross_salary
+6.Net_salary
+7. LIC 
+8. PF 
+9.Total_deductions are \n""")
+infile1=open("Emp.txt",'r+')
+print(infile1.read())
+infile1.close()
